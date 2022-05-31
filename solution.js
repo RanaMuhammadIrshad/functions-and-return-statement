@@ -33,6 +33,21 @@ const sumOfCubes = function (num1 = 0, num2 = 0, num3 = 0) {
 let sum = sumOfCubes(1, 5, 9);
 console.log(sum);
 
+// Method-2
+// function sumOfCubes(num1, num2, num3) {
+//   let arrayNumber = [];
+//   let sumTotal = 0;
+//   if(!num1) return sumTotal;
+//   arrayNumber.push(num1);
+//   if(num2) arrayNumber.push(num2);
+//   if(num3) arrayNumber.push(num3);
+//   for (let i = 0; i < arrayNumber.length; i++) {
+//       sumTotal += Math.pow(arrayNumber[i], 3);
+//   }
+//   return sumTotal;
+// }
+// console.log(sumOfCubes())
+
 /* **3. String Check.**
 Create a function that takes a string and a word, and then returns true or false depending on whether the word starts with the initial string.
 
@@ -43,9 +58,12 @@ Examples:
 * isStrStartOfWord("beau", "pastry") ➞ false */
 
 const isStrStartOfWord = function (str, word) {
-  let myString = str.slice(0, str.length);
-  
-  let myWord = word.slice(0, str.length);
+  let myString = str.toLowerCase();
+  console.log(myString);
+  let myWord = word.toLowerCase();
+  console.log(myWord);
+  myString = myString.slice(0, myString.length);
+  myWord = myWord.slice(0, myString.length);
   if (myString === myWord) {
     return true;
   } else {
@@ -53,7 +71,7 @@ const isStrStartOfWord = function (str, word) {
   }
 };
 
-let result1 = isStrStartOfWord("bu", "button");
+let result1 = isStrStartOfWord("hello", "Hello, World");
 console.log(`No.3: ${result1}`);
 
 /* **4. Less Than or Equal to Zero?**
@@ -115,6 +133,12 @@ const calcBaseToExponent = function (base, expo) {
 
 const baseToExp = calcBaseToExponent(5, 5);
 console.log(baseToExp);
+
+// Method-2
+// function calcBaseToExponent(base, exponent) {
+//   return base ** exponent; // exponentiation operator
+// }
+// console.log(calcBaseToExponent(3, 3));
 
 /* **7. Dog Years.**
 Create a function which calculates how old a dog is in dog years. The function should accept one argument that is the dog's age in human years. Calculate the dog's age in dog years based on the calculation of 1 human year = 7 dog years.
@@ -235,15 +259,44 @@ const isEqualNumXandOs = function (str) {
     }
   }
 
-  if (countO === countX) {
+  if (countO === 0 && countX === 0) {
     return true;
-  } else {
+  } else if (countO === countX) {
+    return true;
+  }else if (countO!== countX) {
     return false;
   }
 };
 
 const comOAndX = isEqualNumXandOs("ooxXm");
 console.log(comOAndX);
+
+// Method-2
+// function isEqualNumberOfXandOs(str) {
+//   const LOWER_CASE_STR = str.toLowerCase();
+//   let countX = 0;
+//   let countO = 0;
+//   for (let i = 0; i < str.length; i++) {
+//       if (LOWER_CASE_STR[i] === "x") {
+//           countX++;
+//       } else if (LOWER_CASE_STR[i] === "o") {
+//           countO++;
+//       }
+//   }
+//   if ((countX === 0) && (countO === 0)) {
+//       return `${true}: there is no instance of either "x" or "o"`;
+//   } else if (countX === countO) {
+//       return `${true}: we have the same number of "x" and "o"s`;
+//   } else if (countX !== countO) {
+//       return `${false}: panic stations, we do not have the same number of "x" and "o"s`;
+//   }
+// }
+
+// console.log(isEqualNumberOfXandOs("ooxx"));
+// console.log(isEqualNumberOfXandOs("xooxx"));
+// console.log(isEqualNumberOfXandOs("ooxXm"));
+// console.log(isEqualNumberOfXandOs("zpzpzpp"));
+// console.log(isEqualNumberOfXandOs("zzoo"));
 
 /* **12. isPrime?**
 Create a function that returns true if a number is a prime number, and false if it's not. **NB:** a prime number is any positive integer *greater than 1*, which is *only evenly divisible by two divisors: itself and 1*. The first ten prime numbers are 2, 3, 5, 7, 11, 13, 17, 19, 23 and 29.
@@ -294,8 +347,5 @@ const emailCheck = function (email) {
   }
 };
 
-const isEmailValid = emailCheck("john..smith@email.com");
+const isEmailValid = emailCheck("j@example.com");
 console.log(`Email is Valid : ${isEmailValid}`);
-
-
-
